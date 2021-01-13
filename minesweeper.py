@@ -91,8 +91,7 @@ def viewCell(pos):
     if cellText == 'B':
         Label(root, text='You lost!', font=('​Helvetica', 18, 'bold'), bg='black', fg='red').grid(column=0, row=2)
         game_ended = True
-
-    if 0 <= pos['x'] < int(width.get()) and 0 <= pos['y'] < int(height.get()) and pos not in seen_cells:
+    elif 0 <= pos['x'] < int(width.get()) and 0 <= pos['y'] < int(height.get()) and pos not in seen_cells:
         cells[pos['x']][pos['y']]['text'] = cellText
         cells[pos['x']][pos['y']]['bg'] = 'white'
         cells[pos['x']][pos['y']]['fg'] = 'red' if getCellText(pos) == 'B' else colors[getBombsAround(pos)]
@@ -107,8 +106,7 @@ def viewCell(pos):
                             'y': yNeighbor
                         }
                         viewCell(neighborPos)
-
-    if len(seen_cells) == options['width'] * options['height'] - options['bombs']:
+    elif len(seen_cells) == options['width'] * options['height'] - options['bombs']:
         Label(root, text='You won!', font=('​Helvetica', 18, 'bold'), bg='black', fg='green').grid(column=0, row=2)
         game_ended = True
 
